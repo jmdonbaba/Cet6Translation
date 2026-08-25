@@ -22,7 +22,11 @@
   --shadow: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.06);
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
+* { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+/* Buttons: no blue focus ring on pointer/touch taps; keep a ring for keyboard users */
+button:focus { outline: none; }
+button:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
@@ -50,7 +54,9 @@ body {
 .key-area.saved input { display: none; }
 .key-area.saved .btn-sm { display: none; }
 .key-status { display: none; font-size: 12px; color: var(--success); cursor: pointer; }
-.key-status:hover { text-decoration: underline; }
+@media (hover: hover) {
+  .key-status:hover { text-decoration: underline; }
+}
 .key-area.saved .key-status { display: inline; }
 
 /* Cards */
@@ -69,7 +75,9 @@ body {
   font-size: 15px; font-weight: 600; cursor: pointer; white-space: nowrap;
   transition: background 0.2s;
 }
-.btn-primary:hover { background: var(--primary-hover); }
+@media (hover: hover) {
+  .btn-primary:hover { background: var(--primary-hover); }
+}
 .btn-primary:disabled { opacity: 0.6; cursor: not-allowed; }
 
 .btn-sm {
@@ -77,9 +85,13 @@ body {
   border-radius: 6px; font-size: 13px; cursor: pointer;
   background: #fff; transition: all 0.2s;
 }
-.btn-sm:hover { border-color: var(--primary); color: var(--primary); }
+@media (hover: hover) {
+  .btn-sm:hover { border-color: var(--primary); color: var(--primary); }
+}
 .btn-sm.danger { color: var(--danger); border-color: transparent; }
-.btn-sm.danger:hover { background: #fef2f2; border-color: var(--danger); }
+@media (hover: hover) {
+  .btn-sm.danger:hover { background: #fef2f2; border-color: var(--danger); }
+}
 
 .btn-answer {
   padding: 12px 28px;
@@ -90,7 +102,9 @@ body {
   font-size: 15px; font-weight: 600; cursor: pointer;
   white-space: nowrap; transition: all 0.2s;
 }
-.btn-answer:hover { background: var(--primary-light); }
+@media (hover: hover) {
+  .btn-answer:hover { background: var(--primary-light); }
+}
 
 .btn-topic {
   padding: 8px 16px; border: 1px solid var(--border);
@@ -98,7 +112,9 @@ body {
   background: #fff; color: var(--text-secondary);
   transition: all 0.2s;
 }
-.btn-topic:hover { border-color: var(--primary); color: var(--primary); }
+@media (hover: hover) {
+  .btn-topic:hover { border-color: var(--primary); color: var(--primary); }
+}
 
 /* Topic card (full width) */
 .topic-card-full {
@@ -317,9 +333,13 @@ body {
   font-size: 14px; cursor: pointer; color: var(--primary);
   font-weight: 500; transition: all 0.2s;
 }
-.btn-favorite:hover { border-color: var(--primary); }
+@media (hover: hover) {
+  .btn-favorite:hover { border-color: var(--primary); }
+}
 .btn-favorite:disabled { opacity: 0.5; cursor: not-allowed; }
-.btn-favorite:disabled:hover { border-color: transparent; }
+@media (hover: hover) {
+  .btn-favorite:disabled:hover { border-color: transparent; }
+}
 .btn-favorite.favorited { background: #fef3c7; color: #d97706; }
 
 /* Word search multi-module */
@@ -333,9 +353,13 @@ body {
   transition: all 0.2s; padding: 0; line-height: 1; z-index: 5;
 }
 .word-search-btn-plus { bottom: 12px; right: 20px; }
-.word-search-btn-plus:hover { border-color: var(--primary); color: var(--primary); }
+@media (hover: hover) {
+  .word-search-btn-plus:hover { border-color: var(--primary); color: var(--primary); }
+}
 .word-search-btn-minus { bottom: 12px; right: 58px; color: var(--danger); border-color: #fecaca; }
-.word-search-btn-minus:hover { background: #fef2f2; border-color: var(--danger); color: #dc2626; }
+@media (hover: hover) {
+  .word-search-btn-minus:hover { background: #fef2f2; border-color: var(--danger); color: #dc2626; }
+}
 
 /* Favorites nav */
 .fav-btns { display: flex; gap: 10px; margin-top: 16px; }
@@ -346,7 +370,9 @@ body {
   color: var(--text); transition: all 0.2s;
   box-shadow: var(--shadow);
 }
-.btn-fav-nav:hover { border-color: var(--primary); color: var(--primary); }
+@media (hover: hover) {
+  .btn-fav-nav:hover { border-color: var(--primary); color: var(--primary); }
+}
 
 /* Modal */
 .modal-overlay {
@@ -369,7 +395,9 @@ body {
   background: none; border: none; font-size: 24px;
   cursor: pointer; color: var(--text-secondary); padding: 0 4px;
 }
-.modal-close:hover { color: var(--danger); }
+@media (hover: hover) {
+  .modal-close:hover { color: var(--danger); }
+}
 .modal-body { flex: 1; overflow-y: auto; padding: 8px 20px 20px; }
 
 /* More menu */
@@ -378,7 +406,9 @@ body {
   color: var(--text-secondary); padding: 4px 8px; border-radius: 6px;
   line-height: 1;
 }
-.more-btn:hover { background: var(--border); color: var(--text); }
+@media (hover: hover) {
+  .more-btn:hover { background: var(--border); color: var(--text); }
+}
 .more-menu {
   display: none; position: absolute; right: 0;
   background: var(--card-bg); border: 1px solid var(--border);
@@ -391,19 +421,25 @@ body {
   background: none; font-size: 14px; cursor: pointer; text-align: left;
   color: var(--text);
 }
-.more-menu button:hover { background: var(--primary-light); }
-.more-menu button.danger { color: var(--danger); }
-.more-menu button.danger:hover { background: #fef2f2; }
-
-/* Vocab fav compact */
-.vf-compact {
-  display: flex; justify-content: space-between; align-items: center;
-  padding: 12px 16px; border-bottom: 1px solid var(--border);
-  cursor: pointer; transition: background 0.15s;
+@media (hover: hover) {
+  .more-menu button:hover { background: var(--primary-light); }
 }
-.vf-compact:hover { background: var(--primary-light); }
+.more-menu button.danger { color: var(--danger); }
+@media (hover: hover) {
+  .more-menu button.danger:hover { background: #fef2f2; }
+}
+
+/* Vocab fav compact item */
+.vf-compact {
+  position: relative; display: flex; justify-content: space-between; align-items: center;
+  padding: 12px 16px; border-bottom: 1px solid var(--border);
+  transition: background 0.15s;
+}
+@media (hover: hover) {
+  .vf-compact:hover { background: var(--primary-light); }
+}
 .vf-compact.pinned { background: #f1f5f9; }
-.vf-compact .vf-main { flex: 1; min-width: 0; }
+.vf-compact .vf-main { flex: 1; min-width: 0; cursor: pointer; }
 .vf-compact .vf-word { font-size: 16px; font-weight: 700; color: var(--primary); }
 .vf-compact .vf-brief { font-size: 13px; color: var(--text-secondary); margin-top: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .vf-detail {
@@ -417,6 +453,49 @@ body {
 .vf-detail .vf-sen { font-size: 13px; color: var(--primary-hover); margin: 3px 0 3px 8px; }
 .vf-detail .vf-sen-cn { color: var(--text-secondary); margin-left: 4px; }
 .vf-detail .vf-forms { font-size: 12px; color: var(--text-secondary); margin-top: 6px; padding-top: 6px; border-top: 1px dashed var(--border); }
+
+/* Drag handle */
+.vf-drag-handle {
+  display: flex; gap: 2px; align-items: center; justify-content: center;
+  width: 24px; height: 28px; cursor: grab; flex-shrink: 0;
+  border-radius: 4px; transition: background 0.15s; margin-right: 4px;
+  touch-action: none;
+}
+.vf-drag-handle::before,
+.vf-drag-handle::after {
+  content: ''; display: block;
+  width: 2px; height: 14px; border-radius: 1px;
+  background: var(--text-secondary);
+  transition: background 0.15s;
+}
+@media (hover: hover) {
+  .vf-drag-handle:hover { background: var(--border); }
+  .vf-drag-handle:hover::before,
+  .vf-drag-handle:hover::after { background: var(--text); }
+}
+.vf-drag-handle:active { cursor: grabbing; }
+.vf-compact.dragging { opacity: 0.4; }
+.vf-compact.drag-over { box-shadow: inset 0 -2px 0 var(--primary); }
+.vf-compact.drag-over-top { box-shadow: inset 0 2px 0 var(--primary); }
+
+/* Drag ghost */
+.vf-drag-ghost {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1001;
+  pointer-events: none;
+  opacity: 0.85;
+  background: var(--card-bg);
+  border: 1px solid var(--primary);
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+  padding: 10px 16px;
+  font-size: 14px;
+  white-space: nowrap;
+  will-change: transform;
+  transform: translate3d(0, 0, 0) translate(-50%, -50%);
+}
 
 /* Fav items (translation favs + essay favs compat) */
 .fav-item {
@@ -445,7 +524,9 @@ body {
   font-size: 14px; line-height: 1; color: var(--text-secondary);
   cursor: pointer; transition: background 0.15s, color 0.15s;
 }
-.fav-search-clear:hover { background: var(--text-secondary); color: #fff; }
+@media (hover: hover) {
+  .fav-search-clear:hover { background: var(--text-secondary); color: #fff; }
+}
 .fav-search-clear.visible {
   display: inline-flex; align-items: center; justify-content: center;
 }
@@ -460,13 +541,34 @@ body {
   cursor: pointer; border-bottom: 1px solid var(--border); transition: background 0.15s;
 }
 .fs-dd-item:last-child { border-bottom: none; }
-.fs-dd-item:hover { background: var(--primary-light); }
+.fs-dd-item.key-selected {
+  background: var(--primary-light);
+}
+@media (hover: hover) {
+  .fs-dd-item:hover { background: var(--primary-light); }
+}
 .fs-dd-item .fs-word { font-size: 15px; font-weight: 700; color: var(--primary); }
 .fs-dd-item .fs-phonetic { font-size: 12px; color: var(--text-secondary); font-family: "Times New Roman", serif; }
 .fs-dd-item .fs-pos { font-size: 11px; color: var(--text-secondary); background: #e2e8f0; padding: 1px 6px; border-radius: 8px; }
 .fs-dd-item .fs-meaning { font-size: 12px; color: var(--text-secondary); flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .match-hl { color: #dc2626; }
 .fs-dd-empty { padding: 16px; text-align: center; color: var(--text-secondary); font-size: 13px; }
+
+/* Word search dropdown (same style as fav-search-dropdown) */
+.ws-search-dropdown {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0; right: 0;
+  margin-top: 4px;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.14);
+  z-index: 20;
+  max-height: 260px;
+  overflow-y: auto;
+}
 
 /* Empty & error */
 .empty-state { text-align: center; padding: 32px 16px; color: var(--text-secondary); font-size: 14px; }
@@ -481,6 +583,7 @@ body {
 .toast.show { opacity: 1; }
 
 .footer { text-align: center; padding: 16px; color: var(--text-secondary); font-size: 12px; }
+.footer-actions { margin-top: 8px; display: flex; gap: 10px; justify-content: center; }
 
 /* Responsive */
 @media (max-width: 700px) {
@@ -491,6 +594,10 @@ body {
   .review-summary { flex-direction: column; align-items: flex-start; }
   .ti-actions { flex-direction: column; gap: 10px; align-items: stretch; }
   .ti-actions .ti-right { flex-direction: column; }
+}
+
+@media (max-width: 500px) {
+  .vf-drag-handle { position: absolute; left: 0; top: 0; bottom: 0; width: 16px; height: auto; margin: 0; }
 }
 </style>
 </head>
@@ -585,10 +692,16 @@ body {
     <button class="btn-fav-nav" id="btnOpenTransFav">翻译收藏 <span id="transFavCount">(0)</span></button>
   </div>
 
-  <div class="footer">CET-6 翻译助手 · 数据保存在本地浏览器 · 与作文助手/查词助手共享词汇收藏</div>
+  <div class="footer">CET-6 翻译助手 · 数据保存在本地浏览器 · 与作文助手/查词助手共享词汇收藏
+    <div class="footer-actions">
+      <button class="btn-sm" id="btnExportData">导出数据</button>
+      <button class="btn-sm" id="btnImportData">导入数据</button>
+    </div>
+  </div>
 </div>
 
 <div class="toast" id="toast"></div>
+<input type="file" id="importFileInput" accept=".json,application/json" style="display:none">
 
 <!-- Modal overlay -->
 <div class="modal-overlay" id="modalOverlay" style="display:none">
@@ -612,6 +725,22 @@ body {
       <button class="modal-close" data-close="modalTransFav">&times;</button>
     </div>
     <div class="modal-body" id="modalTransBody"></div>
+  </div>
+  <div class="modal-card" id="modalImportChoice">
+    <div class="modal-header">
+      <span>导入数据</span>
+      <button class="modal-close" data-close="modalImportChoice">&times;</button>
+    </div>
+    <div class="modal-body">
+      <p id="importSummary" style="margin-bottom:16px"></p>
+      <div style="display:flex;gap:10px;justify-content:space-between">
+        <button class="btn-sm" id="btnImportCancel">取消</button>
+        <div style="display:flex;gap:10px">
+          <button class="btn-sm" id="btnImportMerge">合并导入</button>
+          <button class="btn-sm danger" id="btnImportOverwrite">覆盖导入</button>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -670,6 +799,27 @@ function fmtTime(date) {
   const d = new Date(date);
   const p = n => String(n).padStart(2, '0');
   return `${d.getFullYear()}-${p(d.getMonth()+1)}-${p(d.getDate())} ${p(d.getHours())}:${p(d.getMinutes())}:${p(d.getSeconds())}`;
+}
+
+// Supports both the new structured forms object and existing saved string data.
+function renderForms(forms) {
+  if (!forms) return '';
+  if (typeof forms === 'string') return esc(forms);
+
+  const inflections = Array.isArray(forms.inflections) ? forms.inflections : [];
+  const derivatives = Array.isArray(forms.derivatives) ? forms.derivatives : [];
+  const inflectionText = inflections
+    .filter(item => item && item.type && item.word)
+    .map(item => `${esc(item.type)} ${esc(item.word)}`)
+    .join('；');
+  const derivativeText = derivatives
+    .filter(item => item && item.word && item.meaning)
+    .map(item => `${item.pos ? `${esc(item.pos)} ` : ''}${esc(item.word)} ${esc(item.meaning)}`)
+    .join('；');
+  const groups = [];
+  if (inflectionText) groups.push(`词形变化：${inflectionText}`);
+  if (derivativeText) groups.push(`同根派生：${derivativeText}`);
+  return groups.join('；') || '无';
 }
 
 async function callDeepSeek(messages, options = {}) {
@@ -1313,7 +1463,10 @@ function getVFavs() {
   } catch { return []; }
 }
 function setVFavs(vs) {
-  try { localStorage.setItem(VFAV_KEY, JSON.stringify(vs)); }
+  try {
+    localStorage.setItem(VFAV_KEY, JSON.stringify(vs));
+    _favoritesSearchCache = vs;
+  }
   catch { toast('存储空间不足，请清理收藏后重试'); }
 }
 
@@ -1415,6 +1568,7 @@ function renderVFavs() {
         <div class="vf-word">${esc(f.word)} ${f.phonetic ? `<span class="phonetic">${esc(f.phonetic)}</span>` : ''} ${f.pos ? `<span class="pos">${esc(f.pos)}</span>` : ''}</div>
         <div class="vf-brief">${esc(f.meaning)}</div>
       </div>
+      <span class="vf-drag-handle"></span>
       <div class="fav-actions" style="position:relative">
         <button class="more-btn" data-act="morevfav" data-id="${f.id}">&ctdot;</button>
         <div class="more-menu" data-menu="vfav-${f.id}">
@@ -1424,7 +1578,7 @@ function renderVFavs() {
       </div>
     </div>
     <div class="vf-detail" id="vfDetail${idx}">
-      ${f.forms ? `<div class="vf-forms" style="margin-top:0">其他变形：${esc(f.forms)}</div>` : ''}
+      ${f.forms ? `<div class="vf-forms" style="margin-top:0">${renderForms(f.forms)}</div>` : ''}
       ${f.examples && f.examples.length ? `<div style="margin-top:8px;font-weight:600;font-size:13px;color:var(--text-secondary)">例句：</div>` + f.examples.map((ex, ei) => {
         const en = typeof ex === 'string' ? ex : (ex.en || '');
         const cn = typeof ex === 'string' ? '' : (ex.cn || '');
@@ -1441,6 +1595,13 @@ function renderVFavs() {
 }
 
 // ==================== 收藏搜索（subsequence match） ====================
+let _favoritesSearchCache = null;
+
+function getSearchFavorites() {
+  if (!_favoritesSearchCache) _favoritesSearchCache = getVFavs();
+  return _favoritesSearchCache;
+}
+
 function subsequenceMatch(query, word) {
   const q = query.toLowerCase();
   const w = word.toLowerCase();
@@ -1481,7 +1642,7 @@ function highlightMatches(word, indices) {
 function searchFavorites(query) {
   if (!query || !query.trim()) return [];
   const q = query.trim();
-  const favs = getVFavs();
+  const favs = getSearchFavorites();
   const results = [];
   for (let i = 0; i < favs.length; i++) {
     const f = favs[i];
@@ -1526,6 +1687,59 @@ function hideSearchDropdown() {
   if ($clear) $clear.classList.remove('visible');
 }
 
+// Render word-search dropdown for a specific module
+function renderWSSearchDropdown(dropdown, results) {
+  if (!results.length) {
+    dropdown.style.display = 'none';
+    return;
+  }
+  dropdown.innerHTML = results.map(r => {
+    const f = r.fav;
+    const meaning = f.meaning || (f.definitions ? f.definitions.join('；') : '');
+    return '<div class="fs-dd-item" data-favid="' + escAttr(f.id) + '">'
+      + '<span class="fs-word">' + highlightMatches(f.word, r.indices) + '</span>'
+      + (f.phonetic ? '<span class="fs-phonetic">' + esc(f.phonetic) + '</span>' : '')
+      + (f.pos ? '<span class="fs-pos">' + esc(f.pos) + '</span>' : '')
+      + '<span class="fs-meaning">' + esc(meaning) + '</span>'
+      + '</div>';
+  }).join('');
+  dropdown.style.display = 'block';
+}
+
+function hideAllWSSearchDropdowns() {
+  document.querySelectorAll('.ws-search-dropdown').forEach(function(dd) { dd.style.display = 'none'; });
+}
+
+// ==================== Dropdown Keyboard Navigation ====================
+// Navigate selection in a dropdown (ArrowUp/ArrowDown)
+function navigateDropdown(dropdown, key) {
+  const items = dropdown.querySelectorAll('.fs-dd-item');
+  if (!items.length) return;
+  const current = dropdown.querySelector('.fs-dd-item.key-selected');
+  let nextIdx = -1;
+  if (current) {
+    const curIdx = Array.from(items).indexOf(current);
+    current.classList.remove('key-selected');
+    if (key === 'ArrowDown') {
+      nextIdx = (curIdx + 1) % items.length;
+    } else if (key === 'ArrowUp') {
+      nextIdx = (curIdx - 1 + items.length) % items.length;
+    }
+  } else {
+    if (key === 'ArrowDown') nextIdx = 0;
+    else if (key === 'ArrowUp') nextIdx = items.length - 1;
+  }
+  if (nextIdx >= 0) {
+    items[nextIdx].classList.add('key-selected');
+    items[nextIdx].scrollIntoView({ block: 'nearest' });
+  }
+}
+
+// Get the currently selected item in a dropdown
+function getSelectedDropdownItem(dropdown) {
+  return dropdown.querySelector('.fs-dd-item.key-selected');
+}
+
 function scrollToVFavItem(favId) {
   const favs = getVFavs();
   const idx = favs.findIndex(f => f.id === favId);
@@ -1561,7 +1775,7 @@ function renderWordResult(wrapper, resultEl, searchWord_, info) {
         <button class="btn-favorite">收藏</button>
       </div>
       ${info.definitions ? info.definitions.map((d, i) => `<div class="definition"><span class="def-label">${i + 1}.</span>${esc(d)}</div>`).join('') : ''}
-      ${info.forms ? `<div class="word-forms">其他变形：${esc(info.forms)}</div>` : ''}
+      ${info.forms ? `<div class="word-forms">${renderForms(info.forms)}</div>` : ''}
       ${sentences.length ? `<div class="sentences">${sentences.map((s, i) => {
         const en = typeof s === 'string' ? s : (s.en || '');
         const cn = typeof s === 'string' ? '' : (s.cn || '');
@@ -1644,7 +1858,10 @@ function createWordSearchModule() {
     <button class="word-search-btn word-search-btn-plus" data-ws-act="add" data-ws-id="${id}">+</button>
     <button class="word-search-btn word-search-btn-minus" data-ws-act="remove" data-ws-id="${id}">−</button>
     <div class="input-area" style="display:flex;gap:10px">
-      <input type="text" class="word-search-input" placeholder="输入想查询的单词" data-ws-id="${id}" style="flex:1;padding:12px 16px;border:2px solid var(--border);border-radius:var(--radius);font-size:15px;outline:none;transition:border-color 0.2s">
+      <div style="flex:1;position:relative;">
+        <input type="text" class="word-search-input" placeholder="输入想查询的单词" data-ws-id="${id}" autocomplete="off" style="width:100%;box-sizing:border-box;padding:12px 16px;border:2px solid var(--border);border-radius:var(--radius);font-size:15px;outline:none;transition:border-color 0.2s">
+        <div class="ws-search-dropdown" data-ws-dd="${id}"></div>
+      </div>
       <button class="btn-primary word-search-submit" data-ws-id="${id}">查词</button>
     </div>
     <div class="word-search-result" style="margin-top:14px"></div>
@@ -1665,7 +1882,8 @@ function openModal(modal, skipFocus) {
   $modalOverlay.style.display = 'flex';
   document.querySelectorAll('.modal-card').forEach(m => m.classList.remove('active'));
   modal.classList.add('active');
-  if (modal === $modalVocabFav && !skipFocus) {
+  // Focus search input when opening vocab favorites (skip when navigating from "open in favorites")
+  if (modal === $modalVocabFav && !skipFocus && !window.matchMedia('(max-width: 500px)').matches) {
     setTimeout(function () {
       var si = document.getElementById('favSearchInput');
       if (si && getVFavs().length) si.focus();
@@ -1775,11 +1993,13 @@ $modalVocabBody.addEventListener('click', e => {
   if (act === 'pinvfav') { closeAllMenus(); pinVFav(id); return; }
   if (act === 'morevfav') {
     e.stopPropagation();
+    const menu = document.querySelector(`[data-menu="vfav-${id}"]`);
+    const wasOpen = menu && menu.classList.contains('open');
     closeAllMenus();
-    document.querySelector(`[data-menu="vfav-${id}"]`).classList.add('open');
+    if (!wasOpen && menu) menu.classList.add('open');
     return;
   }
-  if (compact && !btn) {
+  if (compact && !btn && !e.target.closest('.vf-drag-handle')) {
     const idx = compact.dataset.vfidx;
     const detail = document.getElementById('vfDetail' + idx);
     if (detail) detail.classList.toggle('open');
@@ -1795,8 +2015,10 @@ $modalTransBody.addEventListener('click', e => {
   else if (act === 'pintrans') { closeAllMenus(); pinTransFav(id); }
   else if (act === 'moretrans') {
     e.stopPropagation();
+    const menu = document.querySelector(`[data-menu="trans-${id}"]`);
+    const wasOpen = menu && menu.classList.contains('open');
     closeAllMenus();
-    document.querySelector(`[data-menu="trans-${id}"]`).classList.add('open');
+    if (!wasOpen && menu) menu.classList.add('open');
   }
 });
 
@@ -1884,19 +2106,116 @@ $wsModules.addEventListener('click', async e => {
     }
     return;
   }
+
+  // Handle word search dropdown item click — populate result from favorites cache
+  const ddItem = e.target.closest('.ws-search-dropdown .fs-dd-item');
+  if (ddItem) {
+    const favId = ddItem.dataset.favid;
+    const wrapper = ddItem.closest('.word-search-wrapper');
+    const dropdown = wrapper.querySelector('.ws-search-dropdown');
+    const input = wrapper.querySelector('.word-search-input');
+    const resultEl = wrapper.querySelector('.word-search-result');
+    const favs = getVFavs();
+    const fav = favs.find(f => f.id === favId);
+    if (fav) {
+      input.value = fav.word;
+      renderWordResult(wrapper, resultEl, fav.word, {
+        word: fav.word,
+        phonetic: fav.phonetic,
+        pos: fav.pos,
+        definitions: fav.definitions,
+        forms: fav.forms,
+        sentences: fav.examples,
+        fromCache: true,
+        vfavId: fav.id
+      });
+    }
+    dropdown.style.display = 'none';
+    return;
+  }
 });
 
-// Enter key in word search
+// Keyboard navigation in word search inputs
 $wsModules.addEventListener('keydown', e => {
+  const input = e.target.closest('.word-search-input');
+  if (!input) return;
+  const wrapper = input.closest('.word-search-wrapper');
+  const dropdown = wrapper.querySelector('.ws-search-dropdown');
+  const dropdownVisible = dropdown && dropdown.style.display !== 'none';
+
+  if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+    if (dropdownVisible) {
+      e.preventDefault();
+      navigateDropdown(dropdown, e.key);
+    }
+    return;
+  }
+
+  if (e.key === 'Escape') {
+    if (dropdown) dropdown.style.display = 'none';
+    return;
+  }
+
   if (e.key === 'Enter') {
-    const input = e.target.closest('.word-search-input');
-    if (input) {
-      const wrapper = input.closest('.word-search-wrapper');
-      if (wrapper && !wrapper._searching) {
-        wrapper.querySelector('.word-search-submit').click();
+    if (dropdownVisible) {
+      const selected = getSelectedDropdownItem(dropdown);
+      if (selected) {
+        e.preventDefault();
+        // Trigger the same action as clicking the dropdown item
+        const favId = selected.dataset.favid;
+        const favs = getVFavs();
+        const fav = favs.find(f => f.id === favId);
+        if (fav) {
+          input.value = fav.word;
+          const resultEl = wrapper.querySelector('.word-search-result');
+          renderWordResult(wrapper, resultEl, fav.word, {
+            word: fav.word,
+            phonetic: fav.phonetic,
+            pos: fav.pos,
+            definitions: fav.definitions,
+            forms: fav.forms,
+            sentences: fav.examples,
+            fromCache: true,
+            vfavId: fav.id
+          });
+        }
+        dropdown.style.display = 'none';
+        return;
       }
     }
+    // No selection — submit search
+    if (dropdown) dropdown.style.display = 'none';
+    if (wrapper && !wrapper._searching) {
+      wrapper.querySelector('.word-search-submit').click();
+    }
   }
+});
+
+// Word search input — show favorites dropdown as user types
+$wsModules.addEventListener('input', e => {
+  const input = e.target.closest('.word-search-input');
+  if (!input) return;
+  const query = input.value;
+  const wrapper = input.closest('.word-search-wrapper');
+  const dropdown = wrapper.querySelector('.ws-search-dropdown');
+  if (!query || !query.trim()) {
+    dropdown.style.display = 'none';
+    return;
+  }
+  const results = searchFavorites(query);
+  renderWSSearchDropdown(dropdown, results);
+});
+
+// Word search input — re-show dropdown on focus when a query is still present
+$wsModules.addEventListener('focusin', e => {
+  const input = e.target.closest('.word-search-input');
+  if (!input) return;
+  const query = input.value;
+  if (!query || !query.trim()) return;
+  const wrapper = input.closest('.word-search-wrapper');
+  const dropdown = wrapper.querySelector('.ws-search-dropdown');
+  const results = searchFavorites(query);
+  renderWSSearchDropdown(dropdown, results);
 });
 
 // ==================== 收藏搜索事件 ====================
@@ -1914,13 +2233,51 @@ if ($favSearchInput) {
     renderSearchDropdown(results);
   });
 
+  // Re-show dropdown + clear button on focus when a query is still present
+  $favSearchInput.addEventListener('focus', function () {
+    const query = this.value;
+    const $clear = document.getElementById('favSearchClear');
+    if ($clear) $clear.classList.toggle('visible', !!query);
+    if (!query || !query.trim()) return;
+    const results = searchFavorites(query);
+    renderSearchDropdown(results);
+  });
+
+  // Keyboard navigation in favorites search
   $favSearchInput.addEventListener('keydown', function (e) {
+    const $dd = document.getElementById('favSearchDropdown');
+    const ddVisible = $dd && $dd.style.display !== 'none';
+
+    if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+      if (ddVisible) {
+        e.preventDefault();
+        navigateDropdown($dd, e.key);
+      }
+      return;
+    }
+
+    if (e.key === 'Enter') {
+      if (ddVisible) {
+        const selected = getSelectedDropdownItem($dd);
+        if (selected) {
+          e.preventDefault();
+          const favId = selected.dataset.favid;
+          if (favId) {
+            this.value = '';
+            hideSearchDropdown();
+            scrollToVFavItem(favId);
+          }
+          return;
+        }
+      }
+    }
+
     if (e.key === 'Escape') {
       if (this.value) {
         e.stopPropagation();
         this.value = '';
         hideSearchDropdown();
-        this.blur();
+        // Hide clear button
         const $clear = document.getElementById('favSearchClear');
         if ($clear) $clear.classList.remove('visible');
       }
@@ -1957,12 +2314,344 @@ if ($favSearchDropdown) {
 }
 
 document.addEventListener('click', function (e) {
+  // Favorites search dropdown
   const $dd = document.getElementById('favSearchDropdown');
   const $input = document.getElementById('favSearchInput');
   if ($dd && $input && !$input.contains(e.target) && !$dd.contains(e.target)) {
     hideSearchDropdown();
   }
+  // Word search dropdowns
+  document.querySelectorAll('.ws-search-dropdown').forEach(function(dd) {
+    if (dd.style.display === 'none') return;
+    var wrapper = dd.closest('.word-search-wrapper');
+    var inp = wrapper && wrapper.querySelector('.word-search-input');
+    if (inp && !inp.contains(e.target) && !dd.contains(e.target)) {
+      dd.style.display = 'none';
+    }
+  });
 });
+
+// ==================== Drag and drop reorder for favorites ====================
+let dragSrcIdx = null;
+let dragActive = false;
+let dragGhost = null;
+let dragFrame = null;
+let dragPointer = null;
+let dragSourceEl = null;
+let dragIndicator = null;
+let dragIndicatorClass = '';
+
+function clearDragState() {
+  dragSrcIdx = null;
+  dragActive = false;
+  dragPointer = null;
+  dragSourceEl = null;
+  if (dragFrame) { cancelAnimationFrame(dragFrame); dragFrame = null; }
+  if (dragGhost) { dragGhost.remove(); dragGhost = null; }
+  dragIndicator = null;
+  dragIndicatorClass = '';
+  var list = document.getElementById('favListContainer');
+  if (list) list.querySelectorAll('.vf-compact.drag-over, .vf-compact.drag-over-top, .vf-compact.dragging').forEach(function (el) {
+    el.classList.remove('drag-over', 'drag-over-top', 'dragging');
+  });
+}
+
+// The bottom indicator means the dragged card will be inserted after the target.
+function moveFavoriteAfter(items, sourceIndex, targetIndex) {
+  var moved = items.splice(sourceIndex, 1)[0];
+  var insertIndex = targetIndex + (sourceIndex > targetIndex ? 1 : 0);
+  items.splice(insertIndex, 0, moved);
+  return items;
+}
+
+function moveFavoriteBefore(items, sourceIndex, targetIndex) {
+  var moved = items.splice(sourceIndex, 1)[0];
+  var insertIndex = targetIndex - (sourceIndex < targetIndex ? 1 : 0);
+  items.splice(insertIndex, 0, moved);
+  return items;
+}
+
+function isNoOpFavoriteDrop(sourceIndex, targetIndex, insertBefore) {
+  return sourceIndex === targetIndex
+    || (insertBefore ? sourceIndex + 1 === targetIndex : sourceIndex - 1 === targetIndex);
+}
+
+// Find only the card beneath the pointer instead of measuring every favorite card.
+function findCompactAt(clientX, clientY) {
+  var el = document.elementFromPoint(clientX, clientY);
+  var compact = el && el.closest('.vf-compact');
+  return compact && $favListContainer.contains(compact) ? compact : null;
+}
+
+function setDragIndicator(compact, className) {
+  if (dragIndicator === compact && dragIndicatorClass === className) return;
+  if (dragIndicator) dragIndicator.classList.remove('drag-over', 'drag-over-top');
+  dragIndicator = compact;
+  dragIndicatorClass = className || '';
+  if (compact && className) compact.classList.add(className);
+}
+
+// One insertion gap always uses the top edge of the card below it.
+// The only exception is the gap after the final card.
+function resolveDragIndicator(target, insertBefore) {
+  if (insertBefore || target.nextElementSibling) {
+    return { compact: insertBefore ? target : target.nextElementSibling, className: 'drag-over-top' };
+  }
+  return { compact: target, className: 'drag-over' };
+}
+
+function scheduleDragFrame() {
+  if (!dragFrame) dragFrame = requestAnimationFrame(updateDragFrame);
+}
+
+function getDragGhostTransform(clientX, clientY) {
+  var horizontalOffset = window.matchMedia('(max-width: 500px)').matches ? '0' : '-50%';
+  return 'translate3d(' + clientX + 'px, ' + clientY + 'px, 0) translate(' + horizontalOffset + ', -50%)';
+}
+
+function ensureDragVisuals() {
+  if (dragGhost || !dragSourceEl) return;
+  dragSourceEl.classList.add('dragging');
+  var wordEl = dragSourceEl.querySelector('.vf-word');
+  dragGhost = document.createElement('div');
+  dragGhost.className = 'vf-drag-ghost';
+  dragGhost.textContent = wordEl ? wordEl.textContent.trim() : '';
+  document.body.appendChild(dragGhost);
+}
+
+function updateDragFrame() {
+  dragFrame = null;
+  if (!dragActive || dragSrcIdx === null || !dragPointer) return;
+  ensureDragVisuals();
+
+  var clientX = dragPointer.x;
+  var clientY = dragPointer.y;
+  if (dragGhost) {
+    dragGhost.style.transform = getDragGhostTransform(clientX, clientY);
+  }
+
+  var scrollContainer = $modalVocabBody;
+  var rect = scrollContainer.getBoundingClientRect();
+  var edgeZone = 50;
+  var maxScrollStep = 18;
+  var scrollStep = 0;
+  if (clientY < rect.top + edgeZone) {
+    scrollStep = -Math.ceil(maxScrollStep * (rect.top + edgeZone - clientY) / edgeZone);
+  } else if (clientY > rect.bottom - edgeZone) {
+    scrollStep = Math.ceil(maxScrollStep * (clientY - (rect.bottom - edgeZone)) / edgeZone);
+  }
+  if (scrollStep) scrollContainer.scrollTop += scrollStep;
+
+  var target = findCompactAt(clientX, clientY);
+  if (target) {
+    var targetIdx = parseInt(target.dataset.vfidx, 10);
+    if (targetIdx !== dragSrcIdx) {
+      var targetRect = target.getBoundingClientRect();
+      var insertBefore = clientY < targetRect.top + targetRect.height / 2;
+      var indicator = resolveDragIndicator(target, insertBefore);
+      setDragIndicator(indicator.compact, isNoOpFavoriteDrop(dragSrcIdx, targetIdx, insertBefore)
+        ? ''
+        : indicator.className);
+    } else {
+      setDragIndicator(null, '');
+    }
+  } else {
+    var firstCompact = $favListContainer.querySelector('.vf-compact');
+    if (firstCompact) {
+      var fr = firstCompact.getBoundingClientRect();
+      if (clientY < fr.top && clientX >= fr.left && clientX <= fr.right) {
+        setDragIndicator(firstCompact, dragSrcIdx === 0 ? '' : 'drag-over-top');
+      } else {
+        setDragIndicator(null, '');
+      }
+    }
+  }
+
+  // Keep edge scrolling moving smoothly even while the pointer is held still.
+  if (scrollStep) scheduleDragFrame();
+}
+
+// Pointer-based custom drag on drag handle
+$favListContainer.addEventListener('pointerdown', function (e) {
+  var handle = e.target.closest('.vf-drag-handle');
+  if (!handle) return;
+  e.preventDefault();
+  var compact = handle.closest('.vf-compact');
+  if (!compact) return;
+  dragSrcIdx = parseInt(compact.dataset.vfidx, 10);
+  dragActive = true;
+  dragPointer = { x: e.clientX, y: e.clientY };
+  dragSourceEl = compact;
+
+  handle.setPointerCapture(e.pointerId);
+});
+
+$favListContainer.addEventListener('pointermove', function (e) {
+  if (!dragActive || dragSrcIdx === null) return;
+  dragPointer = { x: e.clientX, y: e.clientY };
+  scheduleDragFrame();
+});
+
+$favListContainer.addEventListener('pointerup', function (e) {
+  if (!dragActive || dragSrcIdx === null) return;
+  // Finalize drop
+  var target = findCompactAt(e.clientX, e.clientY);
+  if (target) {
+    var targetIdx = parseInt(target.dataset.vfidx, 10);
+    if (targetIdx !== dragSrcIdx) {
+      var favs = getVFavs();
+      var targetRect = target.getBoundingClientRect();
+      var insertBefore = e.clientY < targetRect.top + targetRect.height / 2;
+      if (!isNoOpFavoriteDrop(dragSrcIdx, targetIdx, insertBefore)) {
+        setVFavs(insertBefore
+          ? moveFavoriteBefore(favs, dragSrcIdx, targetIdx)
+          : moveFavoriteAfter(favs, dragSrcIdx, targetIdx));
+        renderVFavs();
+      }
+    }
+  } else {
+    // Check if dropped above the first item (position 0)
+    var firstCompact = $favListContainer.querySelector('.vf-compact');
+    if (firstCompact) {
+      var fr = firstCompact.getBoundingClientRect();
+      if (e.clientY < fr.top && e.clientX >= fr.left && e.clientX <= fr.right) {
+        var favs = getVFavs();
+        var moved = favs.splice(dragSrcIdx, 1)[0];
+        favs.splice(0, 0, moved);
+        setVFavs(favs);
+        renderVFavs();
+      }
+    }
+  }
+  clearDragState();
+});
+
+$favListContainer.addEventListener('pointercancel', function (e) {
+  if (dragActive) clearDragState();
+});
+
+$favListContainer.addEventListener('lostpointercapture', function (e) {
+  if (dragActive) clearDragState();
+});
+
+// Also cancel on Escape
+document.addEventListener('keydown', function (e) {
+  if (e.key === 'Escape' && dragActive) {
+    clearDragState();
+  }
+});
+
+// ==================== Data Import / Export ====================
+function exportData() {
+  const data = {
+    version: 1,
+    exportedAt: fmtTime(new Date()),
+    apiKey: getApiKey(),
+    favorites: getVFavs(),
+    transFavorites: getTransFavs()
+  };
+  const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  const d = new Date();
+  const p = n => String(n).padStart(2, '0');
+  const stamp = `${d.getFullYear()}${p(d.getMonth() + 1)}${p(d.getDate())}-${p(d.getHours())}${p(d.getMinutes())}${p(d.getSeconds())}`;
+  a.href = url;
+  a.download = `cet6-backup-${stamp}.json`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+  toast('数据已导出（含 API Key，请妥善保管）');
+}
+
+document.getElementById('btnExportData').addEventListener('click', exportData);
+
+let _pendingImport = null;
+
+function importData(file) {
+  const reader = new FileReader();
+  reader.onload = function () {
+    let data;
+    try {
+      data = JSON.parse(reader.result);
+    } catch (e) {
+      toast('文件格式无效：不是合法 JSON');
+      return;
+    }
+    if (!data || !Array.isArray(data.favorites)) {
+      toast('文件格式无效：缺少 favorites 数组');
+      return;
+    }
+    _pendingImport = data;
+    const favCount = data.favorites.length;
+    const transCount = Array.isArray(data.transFavorites) ? data.transFavorites.length : 0;
+    const hasKey = typeof data.apiKey === 'string' && data.apiKey.trim() !== '';
+    const parts = [`${favCount} 条词汇收藏`];
+    if (transCount) parts.push(`${transCount} 条翻译收藏`);
+    document.getElementById('importSummary').textContent =
+      `文件包含 ${parts.join(' 和 ')}${hasKey ? ' 和 API Key' : ''}。请选择导入方式：`;
+    openModal(document.getElementById('modalImportChoice'));
+  };
+  reader.onerror = function () {
+    toast('读取文件失败');
+  };
+  reader.readAsText(file);
+}
+
+function mergeByKey(existing, incoming, keyOf) {
+  const seen = new Set(existing.map(keyOf));
+  const merged = existing.slice();
+  for (const f of incoming) {
+    if (!f || typeof f !== 'object') continue;
+    const key = keyOf(f);
+    if (!key) continue;
+    if (!seen.has(key)) {
+      seen.add(key);
+      merged.push(f);
+    }
+  }
+  return merged;
+}
+
+function applyImport(mode, data) {
+  if (mode === 'overwrite') {
+    if (!confirm('确定要覆盖导入吗？当前浏览器中的收藏将被替换为文件内容。')) return;
+    setVFavs((Array.isArray(data.favorites) ? data.favorites : []).filter(f => f && typeof f.word === 'string'));
+    setTransFavs((Array.isArray(data.transFavorites) ? data.transFavorites : []).filter(f => f && typeof f.chinese === 'string'));
+    setApiKey(typeof data.apiKey === 'string' ? data.apiKey : '');
+  } else if (mode === 'merge') {
+    setVFavs(mergeByKey(getVFavs(), Array.isArray(data.favorites) ? data.favorites : [], f => (f && f.word ? f.word.toLowerCase() : '')));
+    setTransFavs(mergeByKey(getTransFavs(), Array.isArray(data.transFavorites) ? data.transFavorites : [], f => (f && f.chinese ? f.chinese : '')));
+    const importedKey = typeof data.apiKey === 'string' ? data.apiKey.trim() : '';
+    if (importedKey) setApiKey(importedKey);
+  } else {
+    return;
+  }
+  closeModal();
+  renderVFavs();
+  renderTransFavs();
+  updateAllVocabButtons();
+  initKey();
+  updateTopicStatus();
+  toast(mode === 'overwrite' ? '已覆盖导入' : '已合并导入');
+}
+
+document.getElementById('btnImportData').addEventListener('click', () => {
+  document.getElementById('importFileInput').click();
+});
+document.getElementById('importFileInput').addEventListener('change', e => {
+  const file = e.target.files && e.target.files[0];
+  if (file) importData(file);
+  e.target.value = '';
+});
+document.getElementById('btnImportOverwrite').addEventListener('click', () => {
+  if (_pendingImport) applyImport('overwrite', _pendingImport);
+});
+document.getElementById('btnImportMerge').addEventListener('click', () => {
+  if (_pendingImport) applyImport('merge', _pendingImport);
+});
+document.getElementById('btnImportCancel').addEventListener('click', closeModal);
 
 // ==================== Key management ====================
 function initKey() {
@@ -1973,6 +2662,12 @@ function initKey() {
     $btnSaveKey.style.display = 'none';
     $keyStatus.style.display = 'inline';
     $keyStatus.textContent = 'API Key 已保存（点击更换）';
+  } else {
+    $keyArea.classList.remove('saved');
+    $apiKeyInput.style.display = '';
+    $btnSaveKey.style.display = '';
+    $keyStatus.style.display = 'none';
+    $apiKeyInput.value = '';
   }
 }
 
