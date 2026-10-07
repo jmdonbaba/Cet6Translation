@@ -92,7 +92,7 @@
 |----|------|
 | 界面 | HTML5 + CSS3（CSS 变量、Flexbox） |
 | 逻辑 | 原生 JavaScript（ES6+） |
-| AI | DeepSeek Chat API（deepseek-v4-flash） |
+| AI | DeepSeek Chat API（deepseek-flash） |
 | 存储 | 浏览器 localStorage |
 | 部署 | 静态文件，双击即用 |
 
